@@ -1,0 +1,52 @@
+<html>
+<head>
+
+<!-- Reference to tables.css script in Hostinger File Manager -->
+    <link rel="stylesheet" type="text/css" href="https://www.andrewswxcenter.com/files/style.css">
+
+<script type="text/javascript">
+tday=new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+tmonth=new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+function GetClock(){
+var tzOffset = 0;
+var d=new Date();
+var dx=d.toGMTString();
+dx=dx.substr(0,dx.length -3);
+d.setTime(Date.parse(dx))
+d.setHours(d.getHours()+tzOffset);
+var nday=d.getDay(),nmonth=d.getMonth(),ndate=d.getDate(),nyear=d.getYear();
+if(nyear<1000) nyear+=1900;
+var nhour=d.getHours(),nmin=d.getMinutes(),nsec=d.getSeconds();
+if(nmin<=9) nmin="0"+nmin
+if(nsec<=9) nsec="0"+nsec;
+
+document.getElementById('clockbox').innerHTML=""+tday[nday]+", "+tmonth[nmonth]+" "+ndate+", "+nyear+" "+nhour+":"+nmin+":"+nsec+"";
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="images">
+<img src="https://www.andrewswxcenter.com/images/logo_homepage.jpg" class="logo"/>
+
+<a href="http://www.nws.noaa.gov/com/weatherreadynation/" target="_blank"><img src="https://www.andrewswxcenter.com/images/wrn_homepage.jpg" class="wrn"/></a>
+
+<a href="https://www.centralcarolinaskywarn.net/" target="_blank"><img src="https://www.andrewswxcenter.com/images/skywarn_homepage.jpg" class="skywarn"/></a>
+
+<a href="https://www.cocorahs.org/" target="_blank"><img src="https://www.andrewswxcenter.com/images/cocorahs_homepage.jpg" class="cocorahs"/></a>
+
+<a href="http://www.andrewswxcenter.com/files/nc_constitution.txt" target="_blank"><img src="https://www.andrewswxcenter.com/images/nc_flag_homepage.jpg" class="flag"></a>
+</div>
+
+<h3><b><u>UTC/GMT/Z Time:</u></b></h3>
+<div id="clockbox" class="utcclock" style="font:20pt Arial";></div>
+
+</body>
+</html>
